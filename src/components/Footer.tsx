@@ -1,0 +1,64 @@
+import React from 'react';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+
+export default function Footer() {
+  return (
+    <footer className="bg-gradient-to-br from-teal-600 to-green-500 text-white">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div className="flex items-center space-x-3 mb-6">
+              <img 
+                src={logo} 
+                alt="Olives Logo" 
+                className="h-12 w-auto"
+              />
+              <span className="text-xl font-bold">
+                Olives Family Day Home Agency
+              </span>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">Hours of Operation</h3>
+            <ul className="space-y-2">
+              <li>Monday - Friday: 8:30 AM - 4:30 PM</li>
+              <li>Saturday - Sunday: Closed</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><Link to="/" className="hover:text-teal-200">Home</Link></li>
+              <li><Link to="/about" className="hover:text-teal-200">About</Link></li>
+              <li><Link to="/providers" className="hover:text-teal-200">Find A Day Home</Link></li>
+              <li><Link to="/parents" className="hover:text-teal-200">Open A Day Home</Link></li>
+              <li><Link to="/contact" className="hover:text-teal-200">Contact Us</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <div className="space-y-3">
+              <p className="flex items-center space-x-2">
+                <Phone size={16} />
+                <span>(587) 889-3261</span>
+              </p>
+              <p className="flex items-center space-x-2">
+                <Mail size={16} />
+                <span>olivefdhagency@gmail.com</span>
+              </p>
+              <p className="flex items-center space-x-2">
+                <MapPin size={16} />
+                <span>Calgary, Alberta</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-teal-500 mt-8 pt-8 text-center">
+          <p>&copy; {new Date().getFullYear()} Olives Family Day Home Agency. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
