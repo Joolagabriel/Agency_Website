@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-gradient-to-br from-teal-600 to-green-500 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -30,11 +34,11 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="hover:text-teal-200">Home</Link></li>
-              <li><Link to="/about" className="hover:text-teal-200">About</Link></li>
-              <li><Link to="/providers" className="hover:text-teal-200">Find A Day Home</Link></li>
-              <li><Link to="/parents" className="hover:text-teal-200">Open A Day Home</Link></li>
-              <li><Link to="/contact" className="hover:text-teal-200">Contact Us</Link></li>
+              <li><Link to="/" onClick={scrollToTop} className="hover:text-teal-200">Home</Link></li>
+              <li><Link to="/about" onClick={scrollToTop} className="hover:text-teal-200">About</Link></li>
+              <li><Link to="/registration" onClick={scrollToTop} className="hover:text-teal-200">Find A Day Home</Link></li>
+              <li><Link to="/open-dayhome" onClick={scrollToTop} className="hover:text-teal-200">Open A Day Home</Link></li>
+              <li><Link to="/contact" onClick={scrollToTop} className="hover:text-teal-200">Contact Us</Link></li>
             </ul>
           </div>
           <div>
@@ -46,7 +50,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center space-x-2">
                 <Mail size={16} />
-                <span>olivefdhagency@gmail.com</span>
+                <span>contact@olivesfamilydayhome.ca</span>
               </p>
               <p className="flex items-center space-x-2">
                 <MapPin size={16} />

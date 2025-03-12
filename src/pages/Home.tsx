@@ -29,6 +29,10 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div>
       <div className="relative h-[600px] overflow-hidden">
@@ -56,6 +60,7 @@ export default function Home() {
             </p>
             <Link 
               to="/contact"
+              onClick={scrollToTop}
               className="inline-block bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 animate-fade-in-up animation-delay-400"
             >
               Contact Us
@@ -67,7 +72,11 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+            <Link 
+              to="/registration"
+              onClick={scrollToTop}
+              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105"
+            >
               <img 
                 src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80"
                 alt="Find a day home"
@@ -77,8 +86,12 @@ export default function Home() {
                 <h3 className="text-xl font-bold mb-2 text-teal-700">Find A Day Home</h3>
                 <p className="text-gray-600">Find the perfect day home for your child in a safe and nurturing environment.</p>
               </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+            </Link>
+            <Link 
+              to="/open-dayhome"
+              onClick={scrollToTop}
+              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105"
+            >
               <img 
                 src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&q=80"
                 alt="Open a day home"
@@ -88,7 +101,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold mb-2 text-teal-700">Open A Day Home</h3>
                 <p className="text-gray-600">Join our network of professional day home providers and start your own business.</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

@@ -27,7 +27,7 @@ export default function ApplicationProcess() {
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-teal-700">1. Initial Application</h3>
                   <p className="text-gray-700">
-                    Complete our online application form or contact us to express your interest. 
+                    Complete our online <Link to="/contact" className="text-teal-600 hover:text-teal-700 underline">application form</Link> or <Link to="/contact" className="text-teal-600 hover:text-teal-700 underline">contact us</Link> to express your interest. 
                     We'll review your application and get in touch to discuss the next steps.
                   </p>
                 </div>

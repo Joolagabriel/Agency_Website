@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 
@@ -7,6 +7,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isOpenDayHomeDropdownOpen, setIsOpenDayHomeDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,27 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuButton = document.getElementById('menu-button');
+      
+      if (mobileMenu && menuButton && 
+          !mobileMenu.contains(event.target as Node) && 
+          !menuButton.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header>
@@ -38,9 +60,13 @@ export default function Header() {
                     Olives Family Day Home Agency
                   </span>
                 </Link>
+
+                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">
                   <Link to="/" className="text-teal-900 font-bold hover:text-teal-950 transition-colors">Home</Link>
                   <Link to="/about" className="text-teal-900 font-bold hover:text-teal-950 transition-colors">About</Link>
+                  
+                  {/* Find A Day Home Dropdown */}
                   <div className="relative group">
                     <button 
                       className="flex items-center space-x-1 text-teal-900 font-bold hover:text-teal-950 transition-colors"
@@ -85,6 +111,8 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Open A Day Home Dropdown */}
                   <div className="relative group">
                     <button 
                       className="flex items-center space-x-1 text-teal-900 font-bold hover:text-teal-950 transition-colors"
@@ -129,6 +157,7 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
+
                   <Link 
                     to="/contact" 
                     className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
@@ -136,9 +165,118 @@ export default function Header() {
                     Contact Us
                   </Link>
                 </div>
-                <button className="md:hidden text-teal-900">
-                  <Menu size={24} />
+
+                {/* Mobile Menu Button */}
+                <button 
+                  id="menu-button"
+                  className="md:hidden text-teal-900 focus:outline-none"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
+              </div>
+            </div>
+
+            {/* Mobile Menu */}
+            <div
+              id="mobile-menu"
+              className={`md:hidden transition-all duration-300 ease-in-out ${
+                isMobileMenuOpen 
+                  ? 'max-h-screen opacity-100 visible'
+                  : 'max-h-0 opacity-0 invisible'
+              }`}
+            >
+              <div className="px-8 py-4 space-y-4 bg-white rounded-b-2xl shadow-lg">
+                <Link 
+                  to="/" 
+                  className="block text-teal-900 font-bold hover:text-teal-950"
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </Link>
+                <Link 
+                  to="/about" 
+                  className="block text-teal-900 font-bold hover:text-teal-950"
+                  onClick={closeMobileMenu}
+                >
+                  About
+                </Link>
+
+                <div className="space-y-2">
+                  <p className="font-bold text-teal-900">Find A Day Home</p>
+                  <div className="pl-4 space-y-2">
+                    <Link 
+                      to="/choosing-dayhome" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Choosing A Day Home
+                    </Link>
+                    <Link 
+                      to="/registration" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Registration
+                    </Link>
+                    <Link 
+                      to="/resources" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Resources
+                    </Link>
+                    <Link 
+                      to="/faq" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      FAQ
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="font-bold text-teal-900">Open A Day Home</p>
+                  <div className="pl-4 space-y-2">
+                    <Link 
+                      to="/open-dayhome" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Overview
+                    </Link>
+                    <Link 
+                      to="/open-dayhome/why-our-agency" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Why Our Agency?
+                    </Link>
+                    <Link 
+                      to="/open-dayhome/application-process" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Application Process
+                    </Link>
+                    <Link 
+                      to="/open-dayhome/resources" 
+                      className="block text-gray-700 hover:text-teal-900"
+                      onClick={closeMobileMenu}
+                    >
+                      Resources
+                    </Link>
+                  </div>
+                </div>
+
+                <Link 
+                  to="/contact" 
+                  className="block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg text-center transition-all duration-300"
+                  onClick={closeMobileMenu}
+                >
+                  Contact Us
+                </Link>
               </div>
             </div>
           </nav>
