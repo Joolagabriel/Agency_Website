@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import OpenDayHome from './pages/OpenDayHome';
 import WhyOurAgency from './pages/WhyOurAgency';
 import ApplicationProcess from './pages/ApplicationProcess';
+import EducatorLogin from './pages/EducatorLogin';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/open-dayhome/why-our-agency" element={<WhyOurAgency />} />
             <Route path="/open-dayhome/application-process" element={<ApplicationProcess />} />
             <Route path="/open-dayhome/resources" element={<Resources />} />
+            <Route path="/educator-login" element={<EducatorLogin />} />
           </Routes>
         </main>
         <Footer />

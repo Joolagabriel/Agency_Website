@@ -30,6 +30,12 @@ export default function Footer() {
               <li>Monday - Friday: 8:30 AM - 4:30 PM</li>
               <li>Saturday - Sunday: Closed</li>
             </ul>
+            <Link 
+              to="/educator-login" 
+              className="inline-block mt-4 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
+            >
+              Educator Login
+            </Link>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
@@ -61,6 +67,9 @@ export default function Footer() {
         </div>
         <div className="border-t border-teal-500 mt-8 pt-8 text-center">
           <p>&copy; {new Date().getFullYear()} Olives Family Day Home Agency. All rights reserved.</p>
+          <p className="text-sm mt-2 text-teal-100">
+            Website design and strategy by <a href="https://www.kettsefi.ca" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Kettsefi Technologies Inc.</a>
+          </p>
         </div>
       </div>
     </footer>
