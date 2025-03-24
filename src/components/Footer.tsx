@@ -30,12 +30,22 @@ export default function Footer() {
               <li>Monday - Friday: 8:30 AM - 4:30 PM</li>
               <li>Saturday - Sunday: Closed</li>
             </ul>
-            <Link 
-              to="/educator-login" 
-              className="inline-block mt-4 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
-            >
-              Educator Login
-            </Link>
+            <div className="space-y-2 mt-4">
+              <Link 
+                to="/educator-login" 
+                onClick={scrollToTop}
+                className="inline-block w-full px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-center"
+              >
+                Educator Login
+              </Link>
+              <Link 
+                to="/employee-login" 
+                onClick={scrollToTop}
+                className="inline-block w-full px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-center"
+              >
+                Employee Login
+              </Link>
+            </div>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
