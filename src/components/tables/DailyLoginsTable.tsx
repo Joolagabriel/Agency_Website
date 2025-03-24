@@ -43,12 +43,12 @@ export default function DailyLoginsTable() {
   const startEditing = (login: any) => {
     setEditingId(login.login_id);
     setEditForm({
-      starttime: new Date(login.starttime).toISOString().slice(0, 16),
+      starttime: login.starttime ? new Date(login.starttime).toISOString().slice(0, 16) : '',
       endtime: login.endtime ? new Date(login.endtime).toISOString().slice(0, 16) : '',
       login_start_notes: login.login_start_notes || '',
       login_end_notes: login.login_end_notes || '',
-      total_day_hrs: login.total_day_hrs?.toString() || '',
-      daily_edu_govt_rate: login.daily_edu_govt_rate?.toString() || '',
+      total_day_hrs: login.total_day_hrs || '',
+      daily_edu_govt_rate: login.daily_edu_govt_rate || '',
       day_status: login.day_status || 'active'
     });
   };
@@ -155,9 +155,8 @@ export default function DailyLoginsTable() {
                             value={editForm.login_start_notes}
                             onChange={(e) => setEditForm({ ...editForm, login_start_notes: e.target.value })}
                             className="w-full px-2 py-1 border rounded"
-                            placeholder="Enter start notes..."
-                            rows={4}
-                            style={{ minHeight: '100px', resize: 'vertical' }}
+                            placeholder="Start Notes"
+                            rows={2}
                           />
                         </div>
                       </td>
@@ -167,9 +166,8 @@ export default function DailyLoginsTable() {
                             value={editForm.login_end_notes}
                             onChange={(e) => setEditForm({ ...editForm, login_end_notes: e.target.value })}
                             className="w-full px-2 py-1 border rounded"
-                            placeholder={editForm.endtime ? "Enter end notes..." : "Set end time first"}
-                            rows={4}
-                            style={{ minHeight: '100px', resize: 'vertical' }}
+                            placeholder="End Notes"
+                            rows={2}
                             disabled={!editForm.endtime}
                           />
                         </div>
@@ -233,16 +231,12 @@ export default function DailyLoginsTable() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm text-gray-900">
-                          <div className="max-h-32 overflow-y-auto whitespace-pre-wrap bg-gray-50 p-2 rounded">
-                            {login.login_start_notes || '-'}
-                          </div>
+                          <p className="whitespace-pre-wrap">{login.login_start_notes || '-'}</p>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm text-gray-900">
-                          <div className="max-h-32 overflow-y-auto whitespace-pre-wrap bg-gray-50 p-2 rounded">
-                            {login.login_end_notes || '-'}
-                          </div>
+                          <p className="whitespace-pre-wrap">{login.login_end_notes || '-'}</p>
                         </div>
                       </td>
                       <td className="px-6 py-4">
